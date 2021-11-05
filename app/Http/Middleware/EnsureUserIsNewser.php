@@ -9,7 +9,7 @@ class EnsureUserIsNewser
 {
     public function handle(Request $request, Closure $next): mixed
     {
-        if (! $request->user()->isNewserOrAbove)
+        if (! $request->user()->isNewser)
         {
             abort(403);
         }

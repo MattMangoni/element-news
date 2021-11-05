@@ -27,21 +27,18 @@ class User extends Authenticatable
         'password',
     ];
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = ['password', 'remember_token'];
 
-    protected $casts = [
-        'roles' => 'array'
-    ];
+    protected $casts = ['roles' => 'array'];
+
+    protected $appends = ['isNewser'];
 
     public function news(): HasMany
     {
         return $this->hasMany(News::class, 'user_id');
     }
 
-    protected function getIsNewserOrAboveAttribute(): bool
+    protected function getIsNewserAttribute(): bool
     {
         return in_array('Newser', $this->roles);
     }
