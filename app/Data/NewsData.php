@@ -11,6 +11,7 @@ class NewsData extends  Data
     public function __construct(
         public string $title,
         public string|null $body,
+        public string $slug,
         public bool $isDiscussion,
         public string $source,
         public DateTimeImmutable|null $publishedAt,
@@ -23,6 +24,7 @@ class NewsData extends  Data
         return new self(
             title: $news->title,
             body: $news->body,
+            slug: $news->slug,
             isDiscussion: $news->is_discussion,
             source: $news->source,
             publishedAt: $news->published_at,
