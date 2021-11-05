@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Episode;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Inertia\Testing\Assert;
 use function Pest\Laravel\get;
 
 uses(RefreshDatabase::class);
@@ -17,9 +19,14 @@ it('blocks access to the latest episode page to non-newsers', function () {
     get('/latest')->assertStatus(403);
 });
 
-it('allows access to the latest episode page to newsers and above', function () {
+it('shows the latest episode page to newsers', function () {
     /** @noinspection PhpParamsInspection */
     $this->actingAs(User::factory()->create());
+    $episode = Episode::factory()->create();
 
-    get('/latest')->assertStatus(200);
+    get('/latest')->assertStatus(200)->assertInertia(fn (Assert $page) => $page
+        ->component('Episodes/LatestEpisode')
+        ->has('episode.id')
+        ->where('episode.id', $episode->id)
+    );
 });
