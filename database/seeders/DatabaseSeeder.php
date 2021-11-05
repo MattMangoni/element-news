@@ -9,9 +9,12 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        User::factory()->unnamed()->create();
-        User::factory(4)->create();
+        $this->call([
+            UserSeeder::class,
+            EpisodeSeeder::class,
+            NewsSeeder::class,
+        ]);
     }
 }

@@ -10,6 +10,8 @@ return new class extends Migration
     {
         Schema::create('episodes', function (Blueprint $table) {
             $table->id();
+            $table->timestamp('scheduled_for')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
