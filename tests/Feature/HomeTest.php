@@ -6,12 +6,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-it('loads the home page correctly', function () {
-    get('/')->assertStatus(200);
-});
-
-it('loads the /inertia page', function () {
-    get('/home')
+it('loads the home page', function () {
+    get('/')
         ->assertStatus(200)
         ->assertInertia(fn (Assert $page) => $page->component('HomePage'));
 });
