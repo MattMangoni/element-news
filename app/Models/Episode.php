@@ -17,7 +17,7 @@ class Episode extends Model
     protected $dates = ['created_at', 'updated_at', 'scheduled_for'];
 
     protected $casts = [
-        'scheduled_for' => 'immutable_datetime:d/m/Y'
+        'scheduled_for' => 'immutable_datetime'
     ];
 
     public function news(): HasMany

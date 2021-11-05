@@ -16,6 +16,13 @@ class News extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = [
+        'title',
+        'body',
+        'is_discussion',
+        'published_at'
+    ];
+
     protected $dates = ['created_at', 'updated_at', 'published_at'];
 
     protected $casts = [
