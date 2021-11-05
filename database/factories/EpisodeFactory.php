@@ -11,14 +11,14 @@ class EpisodeFactory extends Factory
     public function definition(): array
     {
         return [
-            'scheduled_for' => now()->addWeek()
+            'scheduled_for' => today()->addWeek()
         ];
     }
 
     public function past(): Factory
     {
         return $this->state(fn () => [
-            'scheduled_for' => now()->subWeek()
+            'scheduled_for' => today()->subWeek()
         ]);
     }
 }
