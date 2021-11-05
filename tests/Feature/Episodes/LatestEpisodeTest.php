@@ -26,7 +26,7 @@ it('shows the latest episode page to newsers', function () {
 
     get('/latest')->assertStatus(200)->assertInertia(fn (Assert $page) => $page
         ->component('Episodes/LatestEpisode')
-        ->has('episode.id')
+        ->hasAll(['episode.id', 'episode.news'])
         ->where('episode.id', $episode->id)
     );
 });
