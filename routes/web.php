@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class);
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/latest', LatestEpisodeController::class);
+    Route::get('/latest', LatestEpisodeController::class)->middleware('newser');
 });
 
 require __DIR__.'/auth.php';

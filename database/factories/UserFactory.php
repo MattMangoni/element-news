@@ -18,6 +18,7 @@ class UserFactory extends Factory
             'username' => $this->faker->userName,
             'email' => $this->faker->unique()->safeEmail(),
             'password' => Hash::make('password'),
+            'roles' => ["Newser"],
             'remember_token' => Str::random(10),
         ];
     }
@@ -27,6 +28,13 @@ class UserFactory extends Factory
         return $this->state(fn () => [
             'first_name' => null,
             'last_name' => null,
+        ]);
+    }
+
+    public function basic(): Factory
+    {
+        return $this->state(fn () => [
+            'roles' => ["Basic"]
         ]);
     }
 }

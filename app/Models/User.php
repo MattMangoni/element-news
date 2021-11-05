@@ -29,4 +29,13 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    protected $casts = [
+        'roles' => 'array'
+    ];
+
+    protected function getIsNewserOrAboveAttribute(): bool
+    {
+        return in_array('Newser', $this->roles);
+    }
 }
