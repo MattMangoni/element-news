@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('episode_id')->index()->constrained('episodes')->onDelete('cascade');
             $table->foreignId('user_id')->index()->constrained('users')->onDelete('cascade');
             $table->timestamp('published_at')->nullable();
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
