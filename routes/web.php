@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\News\LatestEpisodeController;
+use App\Http\Controllers\Episodes\LatestEpisodeController;
 use App\Http\Controllers\Pages\HomeController;
 use Illuminate\Support\Facades\Route;
 

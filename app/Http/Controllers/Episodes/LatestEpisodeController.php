@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\News;
+namespace App\Http\Controllers\Episodes;
 
 use App\Http\Controllers\Controller;
 use Inertia\Response;
