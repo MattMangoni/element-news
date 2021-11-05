@@ -1,21 +1,24 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  purge: [
-      './resources/**/*.blade.php',
-      './resources/**/*.js',
-      './resources/**/*.vue',
-  ],
-  darkMode: false, // or 'media' or 'class'
-  theme: {
-    extend: {
-        fontFamily: {
-            sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
-        }
+    purge: [
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/views/**/*.blade.php',
+        './resources/js/**/*.vue',
+    ],
+
+    theme: {
+        extend: {
+            fontFamily: {
+                sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
+            },
+        },
     },
-  },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
-}
+
+    variants: {
+        extend: {},
+    },
+
+    plugins: [require('@tailwindcss/forms')],
+};

@@ -9,3 +9,5 @@ Route::get('/', HomeController::class);
 Route::middleware(['auth'])->group(function () {
     Route::get('/latest', LatestEpisodeController::class);
 });
+
+require __DIR__.'/auth.php';
