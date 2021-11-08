@@ -5,5 +5,9 @@
 </template>
 
 <script>
-export default {}
+import Guest from "@/Layouts/Guest";
+
+export default {
+    layout: Guest
+}
 </script>

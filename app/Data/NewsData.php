@@ -16,8 +16,7 @@ class NewsData extends  Data
         public string $source,
         public Carbon|null $publishedAt,
         public NewserData|null $newser,
-    )
-    {}
+    ) {}
 
     public static function fromModel(News $news): self
     {

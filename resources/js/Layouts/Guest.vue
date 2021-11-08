@@ -1,11 +1,6 @@
 <template>
     <div>
+        Guest
         <slot />
     </div>
 </template>
-
-<script>
-export default {
-    components: {}
-}
-</script>
