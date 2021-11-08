@@ -11,7 +11,6 @@ class EpisodeData extends Data
     public function __construct(
         public int $id,
         public string $scheduledFor,
-        /** @var NewsData[] */
         public DataCollection $news,
     ) {}
 

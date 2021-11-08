@@ -3,7 +3,7 @@
 namespace App\Data;
 
 use App\Models\News;
-use DateTimeImmutable;
+use Carbon\Carbon;
 use Spatie\LaravelData\Data;
 
 class NewsData extends  Data
@@ -14,7 +14,7 @@ class NewsData extends  Data
         public string $slug,
         public bool $isDiscussion,
         public string $source,
-        public DateTimeImmutable|null $publishedAt,
+        public Carbon|null $publishedAt,
         public NewserData|null $newser,
     )
     {}
