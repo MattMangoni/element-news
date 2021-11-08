@@ -11,7 +11,8 @@ class EpisodeFactory extends Factory
     public function definition(): array
     {
         return [
-            'scheduled_for' => today()->addWeek()
+            'scheduled_for' => today()->addWeek(),
+            'created_at' => now()->subSeconds(rand(0, 34)),
         ];
     }
 

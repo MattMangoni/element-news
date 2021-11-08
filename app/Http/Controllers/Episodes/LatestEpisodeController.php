@@ -11,7 +11,9 @@ class LatestEpisodeController extends Controller
 {
     public function __invoke(): Response
     {
-        $episode = EpisodeData::from(Episode::with('news.newser')->latest()->first());
+        $episode = EpisodeData::from(
+            Episode::with('news.newser')->orderBy('created_at', 'DESC')->first()
+        );
 
         return inertia('Episodes/LatestEpisode', [
             'episode' => $episode

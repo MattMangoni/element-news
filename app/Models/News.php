@@ -27,7 +27,7 @@ class News extends Model
 
     protected $casts = [
         'is_discussion' => 'boolean',
-        'published_at' => 'immutable_datetime'
+        'published_at' => 'datetime'
     ];
 
     public function episode(): BelongsTo

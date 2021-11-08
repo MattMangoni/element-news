@@ -22,7 +22,8 @@ class NewsFactory extends Factory
             'source' => $this->faker->url(),
             'user_id' => User::factory(),
             'episode_id' => Episode::factory(),
-            'published_at' => now()->subMinute()
+            'published_at' => now()->subMinute(),
+            'created_at' => now()->subSeconds(rand(0, 34)),
         ];
     }
 
