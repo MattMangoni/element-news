@@ -17,6 +17,8 @@ class News extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'user_id',
+        'episode_id',
         'title',
         'body',
         'is_discussion',
@@ -29,6 +31,11 @@ class News extends Model
         'is_discussion' => 'boolean',
         'published_at' => 'datetime'
     ];
+
+    public function getIsDraftAttribute(): bool
+    {
+        return !$this->published_at || $this->published_at->isPast();
+    }
 
     public function episode(): BelongsTo
     {

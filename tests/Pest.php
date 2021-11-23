@@ -11,7 +11,9 @@
 |
 */
 
-uses(Tests\TestCase::class)->in('Feature');
+use App\Models\User;
+
+uses(Tests\TestCase::class)->in('Feature', 'Unit');
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +41,14 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function logAsSimpleUser($driver = null)
 {
-    // ..
+    /** @noinspection PhpParamsInspection */
+    test()->actingAs(User::factory()->basic()->create(), $driver);
+}
+
+function logAsNewser($driver = null)
+{
+    /** @noinspection PhpParamsInspection */
+    test()->actingAs(User::factory()->create(), $driver);
 }
