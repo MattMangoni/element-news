@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
 
 class News extends Model
 {
@@ -32,10 +33,20 @@ class News extends Model
         'published_at' => 'datetime'
     ];
 
+    public function approve(int $episodeId, bool $isDiscussion, Carbon $publishDate = null): void
+    {
+        $this->update([
+            'episode_id' => $episodeId,
+            'is_discussion' => $isDiscussion,
+            'published_at' => $publishDate ?? now()
+        ]);
+    }
+
     public function getIsDraftAttribute(): bool
     {
-        return !$this->published_at || $this->published_at->isPast();
+        return !$this->published_at || $this->published_at->isFuture();
     }
+
 
     public function episode(): BelongsTo
     {

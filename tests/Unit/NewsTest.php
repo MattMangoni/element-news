@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Episode;
 use App\Models\News;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
@@ -21,11 +22,34 @@ test('Slugs for news are generated automatically', function () {
 test('Fresh news are considered drafts', function () {
     logAsNewser();
 
-    News::create([
+    $news = News::create([
         'user_id' => auth()->id(),
         'title' => 'Random Title',
         'body' => 'Random body'
     ]);
 
-    expect(News::latest()->first()->isDraft)->toBe(true);
+    expect($news->isDraft)->toBe(true);
+});
+
+test('A news can be successfully approved', function () {
+    logAsNewser();
+
+    $episode = Episode::factory()->create();
+
+    $this->withoutExceptionHandling();
+
+    $news = News::create([
+        'user_id' => auth()->id(),
+        'title' => 'Random Title',
+        'body' => 'Random body'
+    ]);
+
+    $news->approve(
+        episodeId: $episode->id,
+        isDiscussion: true,
+        publishDate: $time = now()->subSecond()
+    );
+
+    expect($news->isDraft)->toBe(false);
+    expect($news->episode_id)->toBe($episode->id);
 });
