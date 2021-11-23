@@ -8,7 +8,7 @@ use App\Http\Controllers\News\ShowNewsController;
 use App\Http\Controllers\Pages\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
 Route::middleware(['auth', 'newser'])->group(function () {
     Route::get('/latest', LatestEpisodeController::class)->name('latest-episode');
