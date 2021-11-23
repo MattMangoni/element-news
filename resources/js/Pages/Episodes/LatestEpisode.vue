@@ -1,5 +1,5 @@
 <template>
-    <Head title="Ultimo episodio"></Head>
+    <Head title="Ultimo episodio" />
 
     <div>
         <page-header>

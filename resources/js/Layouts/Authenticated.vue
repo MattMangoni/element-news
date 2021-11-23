@@ -21,13 +21,11 @@
                     </div>
 
                     <div class="hidden md:flex items-baseline space-x-4">
-                        <inertia-link href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">
+                        <nav-link :href="route('latest-episode')" :active="$page.component === 'Episodes/LatestEpisode'">
                             Ultimo Episodio
-                        </inertia-link>
-
-                        <inertia-link href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Staff</inertia-link>
-
-                        <inertia-link href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Linee Guida</inertia-link>
+                        </nav-link>
+                        <nav-link href="#">Staff</nav-link>
+                        <nav-link href="#">Linee Guida</nav-link>
                     </div>
                 </div>
             </div>
@@ -35,12 +33,11 @@
             <!-- Mobile menu, show/hide based on menu state. -->
             <div class="md:hidden" :class="! menuOpen ? 'hidden' : ''" id="mobile-menu">
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                    <inertia-link :href="route('latest-episode')" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">
+                    <nav-link :href="route('latest-episode')" :active="$page.component === 'Episodes/LatestEpisode'">
                         Ultimo Episodio
-                    </inertia-link>
-                    <inertia-link href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Staff</inertia-link>
-                    <inertia-link href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Linee Guida</inertia-link>
+                    </nav-link>
+                    <nav-link href="#">Staff</nav-link>
+                    <nav-link href="#">Linee Guida</nav-link>
                 </div>
             </div>
         </nav>
@@ -50,7 +47,7 @@
 
 <script setup>
 import { ref } from "vue";
-import { InertiaLink } from "@inertiajs/inertia-vue3";
+import NavLink from "@/Components/Breeze/NavLink";
 
 let menuOpen = ref(false)
 
