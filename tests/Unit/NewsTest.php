@@ -20,13 +20,13 @@ test('A news belongs to a newser and an episode', function () {
 test('Slugs for news are generated automatically', function () {
     logAsNewser();
 
-    News::create([
+    $news = News::create([
         'user_id' => auth()->id(),
-        'title' => $title = 'Random Title',
+        'title' => 'Random Title',
         'body' => 'Random body'
     ]);
 
-    expect(News::latest()->first()->slug)->toBe(Str::slug($title));
+    expect($news->slug)->toBe(Str::slug($news->title));
 });
 
 test('Fresh news are considered drafts', function () {
