@@ -12,6 +12,7 @@
 */
 
 use App\Models\User;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 uses(Tests\TestCase::class)->in('Feature', 'Unit');
 

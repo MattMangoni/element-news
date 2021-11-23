@@ -21,7 +21,7 @@ class NewsFactory extends Factory
             'is_discussion' => false,
             'source' => $this->faker->url(),
             'user_id' => User::factory(),
-            'episode_id' => Episode::factory(),
+            'episode_id' => null,
             'published_at' => now()->subMinute(),
             'created_at' => now()->subSeconds(rand(0, 34)),
         ];
@@ -31,6 +31,13 @@ class NewsFactory extends Factory
     {
         return $this->state(fn () => [
             'is_discussion' => true,
+        ]);
+    }
+
+    public function attachedToEpisode(): Factory
+    {
+        return $this->state(fn () => [
+            'episode_id' => Episode::factory(),
         ]);
     }
 

@@ -2,10 +2,20 @@
 
 use App\Models\Episode;
 use App\Models\News;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 
 uses(RefreshDatabase::class);
+
+test('A news belongs to a newser and an episode', function () {
+    logAsNewser();
+
+    $news = News::factory()->attachedToEpisode()->create();
+
+    expect($news->newser)->toBeInstanceOf(User::class);
+    expect($news->episode)->toBeInstanceOf(Episode::class);
+});
 
 test('Slugs for news are generated automatically', function () {
     logAsNewser();
@@ -36,8 +46,6 @@ test('A news can be successfully approved', function () {
 
     $episode = Episode::factory()->create();
 
-    $this->withoutExceptionHandling();
-
     $news = News::create([
         'user_id' => auth()->id(),
         'title' => 'Random Title',
@@ -47,7 +55,7 @@ test('A news can be successfully approved', function () {
     $news->approve(
         episodeId: $episode->id,
         isDiscussion: true,
-        publishDate: $time = now()->subSecond()
+        publishDate: now()->subSecond()
     );
 
     expect($news->isDraft)->toBe(false);
