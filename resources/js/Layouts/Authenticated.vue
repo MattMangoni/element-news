@@ -5,7 +5,9 @@
                 <div class="flex items-center justify-between h-16">
                     <div class="flex items-center">
                         <div class="flex-shrink-0 mr-10">
-                            <h1 class="text-xl text-white font-black">Element News Project</h1>
+                            <h1 class="text-xl text-white font-black">
+                                <Link :href="route('latest-episode')">Element News Project</Link>
+                            </h1>
                         </div>
                     </div>
                     <div class="-mr-2 flex md:hidden">
@@ -21,11 +23,7 @@
                     </div>
 
                     <div class="hidden md:flex items-baseline space-x-4">
-                        <nav-link :href="route('latest-episode')" :active="$page.component === 'Episodes/LatestEpisode'">
-                            Ultimo Episodio
-                        </nav-link>
-                        <nav-link href="#">Staff</nav-link>
-                        <nav-link href="#">Linee Guida</nav-link>
+                        <nav-menu />
                     </div>
                 </div>
             </div>
@@ -33,11 +31,7 @@
             <!-- Mobile menu, show/hide based on menu state. -->
             <div class="md:hidden" :class="! menuOpen ? 'hidden' : ''" id="mobile-menu">
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <nav-link :href="route('latest-episode')" :active="$page.component === 'Episodes/LatestEpisode'">
-                        Ultimo Episodio
-                    </nav-link>
-                    <nav-link href="#">Staff</nav-link>
-                    <nav-link href="#">Linee Guida</nav-link>
+                    <nav-menu />
                 </div>
             </div>
         </nav>
@@ -47,7 +41,8 @@
 
 <script setup>
 import { ref } from "vue";
-import NavLink from "@/Components/Breeze/NavLink";
+import { Link } from '@inertiajs/inertia-vue3'
+import NavMenu from '@/Layouts/Shared/NavMenu'
 
 let menuOpen = ref(false)
 
