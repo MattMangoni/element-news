@@ -17,8 +17,8 @@ return new class extends Migration
             $table->text('body')->nullable();
             $table->boolean('is_discussion')->default(false);
             $table->string('source')->nullable();
-            $table->foreignId('episode_id')->nullable()->index()->constrained('episodes')->onDelete('cascade');
-            $table->foreignId('user_id')->index()->constrained('users')->onDelete('cascade');
+            $table->foreignId('episode_id')->nullable()->constrained('episodes')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
